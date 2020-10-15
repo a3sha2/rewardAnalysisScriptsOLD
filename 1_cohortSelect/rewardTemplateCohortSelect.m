@@ -10,17 +10,23 @@ DIAGNOSIS = 8;
 % Select a cohort for the reward template
 
 fullComplement = fopen('../input/rewardCohort.csv');
+
+
 qaComplement = fopen('../input/rewardScan_qa.csv');
 
 fullComplement = textscan(fullComplement, '%s%s%s%s%s%s%s%s%s%s%s%s%s','delimiter',',');
+
+
 qaComplement = textscan(qaComplement,'%s%s','delimiter',',');
 
 % Convert scan IDs in QA information to numeric
 scanids = qaComplement{1};
 buffer = zeros(size(scanids));
+
 for i = 1:numel(scanids)
     buffer(i) = str2double(scanids{i});
 end
+
 qaComplement{1} = buffer;
 
 % Determine age bins
